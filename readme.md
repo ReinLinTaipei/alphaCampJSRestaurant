@@ -1,6 +1,6 @@
 # Rein's Favorite Restaurants
 
-> A web for restaurant album and detail by > Node.js and express modules.
+> A web for restaurant albums and details.
 
 > **features**
 >
@@ -16,13 +16,13 @@
 >
 > - open terminal, git clone project
 >   ```
->   git clone
+>   git clone https://github.com/ReinLinTaipei/alphaCampJSRestaurant.git
 >   ```
-> - cd `~/project path`
+> - change to project path
 >   ```
 >   cd ~/[project path]
 >   ```
-> - npm install for fetch dependencies
+> - fetch npm dependencies
 >   ```
 >   npm install
 >   ```
