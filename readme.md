@@ -4,25 +4,25 @@
 
 ![ web page shapshot](./public/image/restaurant_snapshot.png)
 
-> **features**
+> **Features**
 >
 > - search restaurant by name or category
 > - tap restaurant, show the details
 
-> **prerequisites**
+> **Prerequisites**
 >
 > - Node.js `v10.16.0`
 > - express.js `v4.17.1`
 
-> **installation and execution**
+> **Installation and execution**
 >
 > - open terminal, git clone project
 >   ```
 >   git clone https://github.com/ReinLinTaipei/alphaCampJSRestaurant.git
 >   ```
-> - change to project path
+> - change to project folder
 >   ```
->   cd ~/[project path]
+>   cd alphaCampJSRestaurant/
 >   ```
 > - fetch npm dependencies
 >   ```
