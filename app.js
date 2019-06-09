@@ -17,7 +17,6 @@ app.get('/', (req, res) => {
 
 // show restaurant details on /views/show.handlebars
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  console.log(`restaurant_id:${req.params.restaurant_id}`)
   const restaurant = restaurants.results.find(
     restaurant =>
       restaurant.id.toString() === req.params.restaurant_id.toString()
@@ -28,7 +27,6 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 // search action on /views/index.handlebars
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.toLowerCase()
-  console.log(`keyword: ${keyword}`)
   const results = restaurants.results.filter(restaurant => {
     return (
       restaurant.name.toLowerCase().includes(keyword) ||

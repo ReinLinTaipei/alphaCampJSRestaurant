@@ -1,9 +1,11 @@
 {{!-- show restaurant details on ./views/show.handlebars--}}
-
+<style>
+  @import url('/css/show.css');
+</style>
+<h1 class="mb-1 restaurant-show-title">
+  {{restaurant.name}}
+</h1>
 <div class="container">
-  <h1 class="mb-1 restaurant-show-title">
-    {{restaurant.name}}
-  </h1>
   <div class="col-12 col-md-10 mx-auto">
     <div class="row">
       <p class="mb-1">
