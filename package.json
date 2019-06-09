@@ -1,7 +1,7 @@
 {
   "name": "restaurant_list",
   "version": "1.0.0",
-  "description": "restaurant list",
+  "description": "Rein's favorite restaurant list",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/reinlintaipei"
+    "url": "https://github.com/ReinLinTaipei/alphaCampJSRestaurant.git"
   },
   "keywords": [
     "restaurant"
