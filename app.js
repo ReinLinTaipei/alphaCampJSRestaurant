@@ -30,7 +30,8 @@ app.get('/search', (req, res) => {
   const results = restaurants.results.filter(restaurant => {
     return (
       restaurant.name.toLowerCase().includes(keyword) ||
-      restaurant.category.toLowerCase().includes(keyword)
+      restaurant.category.toLowerCase().includes(keyword) ||
+      restaurant.name_en.toLowerCase().includes(keyword)
     )
   })
   res.render('index', { restaurants: results, keyword })
