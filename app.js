@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const restaurants = require('./restaurant.json')
 const app = express()
 const port = 3000
+const host = 'http://34.80.159.59'
 
 // set handlebars engine, static path
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -37,6 +38,6 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants: results, keyword })
 })
 
-app.listen(port, () => {
-  console.log(`connecting port: ${port}`)
+app.listen(port, host, () => {
+  console.log(`connecting port: ${host}:${port}`)
 })
