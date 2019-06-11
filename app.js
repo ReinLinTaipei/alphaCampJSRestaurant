@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars')
 const restaurants = require('./restaurant.json')
 const app = express()
 const port = 3000
-const host = 'http://34.80.159.59'
+const host = 'localhost' //'34.80.159.59'
 
 // set handlebars engine, static path
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
