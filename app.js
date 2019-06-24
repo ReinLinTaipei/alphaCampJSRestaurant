@@ -1,7 +1,8 @@
 // require express module, express-handlebars module, json files
 const express = require('express')
 const exphbs = require('express-handlebars')
-const restaurants = require('./restaurant.json')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const host = 'localhost' //'34.80.159.59'
@@ -10,19 +11,36 @@ const host = 'localhost' //'34.80.159.59'
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
+
+mongoose.connect(`mongodb://${host}/restaurant`, { useNewUrlParser: true })
+
+const db = mongoose.connection
+
+db.on('error', error => {
+  console.error(error)
+})
+
+db.once('open', () => {
+  console.log('mongodb connection!')
+})
+
+const Restaurant = require('./models/restaurant')
 
 // list restaurants on /views/index.handlebars
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurants.results })
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurants })
+  })
 })
 
 // show restaurant details on /views/show.handlebars
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurants.results.find(
-    restaurant =>
-      restaurant.id.toString() === req.params.restaurant_id.toString()
-  )
-  res.render('show', { restaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const restaurant = Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    res.render('show', { restaurant })
+  })
 })
 
 // search action on /views/index.handlebars

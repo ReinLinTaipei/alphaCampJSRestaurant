@@ -32,7 +32,7 @@
         {{#each restaurants}}
         {{!-- action to app.js route: get('/restaurants/:restaurant_id' --}}
         <a href="/restaurants/{{this.id}}" class="text-secondary">
-          <div class="card mb-3">
+          <div class="card mb-3 bg-light">
             <img src="{{this.image}}" alt="{{this.name}}" class="card-img-top">
             <div class="card-body p-3">
               <h6 class="card-title mb-1">{{this.name}}</h6>
@@ -44,6 +44,17 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
+            </div>
+            <div class="card-footer text-right">
+              <form action="/restaurant/:id/delete" method="post">
+                <tr>
+                  <td><a href="/restaurants/:id/edit" class="btn btn-primary">Edit</a></td>
+                  <td><a href="/restaurants/{{this.id}}" class="btn btn-primary">Detail</a></td>
+                  <td>
+                    <button type="submit" class=" text-white btn-dark">Delete</button>
+                  </td>
+                </tr>
+              </form>
             </div>
           </div>
         </a>
