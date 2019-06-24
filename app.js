@@ -37,9 +37,30 @@ app.get('/', (req, res) => {
 
 // show restaurant details on /views/show.handlebars
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     res.render('show', { restaurant })
+  })
+})
+
+app.get('/restaurants/:id/edit', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    res.render('edit', { restaurant })
+  })
+})
+
+app.post('/restaurant/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.category = req.body.category
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.description = req.body.description
+    restaurant.save(err => {
+      if (err) return console.err(err)
+      res.redirect(`/restaurants/${req.params.id}`)
+    })
   })
 })
 

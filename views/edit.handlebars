@@ -1,0 +1,43 @@
+{{!-- show restaurant details on ./views/show.handlebars--}}
+
+<style>
+  @import url('/css/show.css');
+</style>
+<form method="POST" action="/restaurant/{{restaurant.id}}">
+  <h1 class="mb-1 restaurant-show-title">
+    {{restaurant.name}}
+  </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            <input type="text" name="category" placeholder="Category:" value='{{restaurant.category}}'>
+          </span>
+        </p>
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            <input type="text" name="location" placeholder="Address:" value='{{restaurant.location}}'>
+          </span>
+        </p>
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            <input type="text" name="phone" placeholder="Telephone:" value='{{restaurant.phone}}'>
+          </span>
+        </p>
+        <td class="mb-5">
+          <tr>
+            <textarea name="description" id="" cols="80" rows="6"
+              placeholder="Description:">{{restaurant.description}}</textarea>
+          </tr>
+          <tr><button class="btn btn-primary" type="submit">Edit</button></tr>
+        </td>
+        <img src="{{restaurant.image}}" alt="{{restaurant.name}}" class="rounded mx-auto d-block mb-4 w-100"
+          style="max-width: 600px;">
+      </div>
+    </div>
+  </div>
+</form>
