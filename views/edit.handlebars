@@ -5,7 +5,7 @@
 </style>
 <form method="POST" action="/restaurant/{{restaurant.id}}">
   <h1 class="mb-1 restaurant-show-title">
-    {{restaurant.name}}
+    <input type="text" name="name" value="{{restaurant.name}}">
   </h1>
   <div class="container">
     <div class="row">
