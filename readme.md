@@ -2,7 +2,7 @@
 
 > A web for restaurant albums and details.
 
-![ web page shapshot](./public/image/restaurant_snapshot.png)
+![ web page shapshot](./public/img/CRUD_restaurant.png)
 
 > **Features**
 >
