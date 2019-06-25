@@ -80,14 +80,17 @@ app.post('/restaurant/:id/delete', (req, res) => {
 // search action on /views/index.handlebars
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.toLowerCase()
-  const results = restaurants.results.filter(restaurant => {
-    return (
-      restaurant.name.toLowerCase().includes(keyword) ||
-      restaurant.category.toLowerCase().includes(keyword) ||
-      restaurant.name_en.toLowerCase().includes(keyword)
-    )
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err)
+    const results = restaurants.filter(restaurant => {
+      return (
+        restaurant.name.toLowerCase().includes(keyword) ||
+        restaurant.category.toLowerCase().includes(keyword) ||
+        restaurant.name_en.toLowerCase().includes(keyword)
+      )
+    })
+    res.render('index', { restaurants: results, keyword })
   })
-  res.render('index', { restaurants: results, keyword })
 })
 
 app.listen(port, host, () => {
