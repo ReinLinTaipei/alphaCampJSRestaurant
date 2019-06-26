@@ -27,7 +27,7 @@ db.once('open', () => {
 
 const Restaurant = require('./models/restaurant')
 
-// list restaurants on /views/index.handlebars
+// list all restaurants
 app.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
@@ -35,8 +35,8 @@ app.get('/', (req, res) => {
   })
 })
 
-// show restaurant details on /views/show.handlebars
-app.get('/restaurants/:id', (req, res) => {
+// show restaurant details
+app.get('/restaurant/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     res.render('show', { restaurant })
@@ -44,7 +44,7 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 // edit page
-app.get('/restaurants/:id/edit', (req, res) => {
+app.get('/restaurant/:id/edit', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     res.render('edit', { restaurant })
@@ -52,7 +52,8 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // edit action
-app.post('/restaurant/:id', (req, res) => {
+app.post('/restaurants/:id', (req, res) => {
+  console.error('edit action')
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.name = req.body.name
@@ -60,13 +61,41 @@ app.post('/restaurant/:id', (req, res) => {
     restaurant.location = req.body.location
     restaurant.phone = req.body.phone
     restaurant.description = req.body.description
+    restaurant.rating = req.body.rating
+    restaurant.image = req.body.image
     restaurant.save(err => {
-      if (err) return console.err(err)
-      res.redirect(`/restaurants/${req.params.id}`)
+      if (err) return console.error(err)
+      res.redirect(`/restaurant/${req.params.id}`)
     })
   })
 })
 
+// create new restaurant page
+app.get('/shop/new', (req, res) => {
+  console.log('new page')
+  res.render('new')
+})
+
+// create action
+app.post('/restaurant/new', (req, res) => {
+  const restaurant = req.body
+  Restaurant.create(
+    {
+      name: restaurant.name,
+      category: restaurant.category,
+      location: restaurant.location,
+      phone: restaurant.phone,
+      description: restaurant.description,
+      image: restaurant.image
+    },
+    err => {
+      if (err) return console.error(err)
+      res.redirect('/')
+    }
+  )
+})
+
+// delete
 app.post('/restaurant/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
@@ -79,6 +108,7 @@ app.post('/restaurant/:id/delete', (req, res) => {
 
 // search action on /views/index.handlebars
 app.get('/search', (req, res) => {
+  console.error('search')
   const keyword = req.query.keyword.toLowerCase()
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)

@@ -1,0 +1,54 @@
+{{!-- show restaurant details on ./views/show.handlebars--}}
+
+<style>
+  @import url('/css/show.css');
+</style>
+<form method="POST" action="/restaurant/new">
+  <h1 class="mb-1 restaurant-show-title">
+    <input type="text" name="name" placeholder="Restaurant name">
+  </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            <input type="text" name="category" placeholder="Category">
+          </span>
+        </p>
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-map-marker-alt pr-2"></i>
+            <input type="text" name="location" placeholder="Address">
+          </span>
+        </p>
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-mobile-alt pr-2"></i>
+            <input type="text" name="phone" placeholder="Telephone">
+          </span>
+        </p>
+        <p class="mb-2">
+          <span class="badge badge-pill badge-danger font-weight-normal">
+            <i class="fas fa-star fa-xs"></i>
+          </span>
+          <span class="text-secondary">
+            <input type="number" name="rating" placeholder="Rate">
+          </span>
+          <span class="text-secondary">
+            <input type="text" name="image" id="" placeholder="Image url">
+          </span>
+        </p>
+        <td class="mb-5">
+          <tr>
+            <textarea name="description" id="" cols="80" rows="6" placeholder="Description"></textarea>
+          </tr>
+          <tr>
+            <button class="btn btn-primary" type="submit">Create</button>
+          </tr>
+        </td>
+
+      </div>
+    </div>
+  </div>
+</form>
