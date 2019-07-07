@@ -2,13 +2,14 @@
 
 > A web for restaurant albums and details.
 
-![ web page shapshot](./public/img/CRUD_restaurant.png)
+![ web page shapshot](./public/img/restaurant_snapshot.png)
 
 > **Features**
 >
 > - search restaurant by name or category
 > - tap restaurant, show the details
 > - edit, delete restaurant information
+> - sort restaurants by four types
 
 > **Prerequisites**
 >
