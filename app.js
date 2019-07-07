@@ -15,6 +15,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', require('./routes/home'))
 app.use('/shops', require('./routes/restaurants'))
+app.use('/sort', require('./routes/sort'))
 app.use(methodOverride('_method'))
 
 mongoose.connect(`mongodb://${host}/restaurant`, { useNewUrlParser: true })

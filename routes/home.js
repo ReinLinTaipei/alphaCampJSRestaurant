@@ -6,7 +6,7 @@ const Restaurant = require('../models/restaurant')
 router.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { stores: restaurants })
+    res.render('index', { stores: restaurants })
   })
 })
 
@@ -23,7 +23,7 @@ router.get('/search', (req, res) => {
           restaurant.name_en.toLowerCase().includes(keyword))
       )
     })
-    res.render('index', { restaurants: results, keyword })
+    res.render('index', { stores: results, keyword })
   })
 })
 

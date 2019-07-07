@@ -8,7 +8,26 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <a href="/shops/create" class="mb-2 btn text-white bg-info">Create restaurant</a>
+      <div class="container">
+        <div class="row">
+          <a href="/shops/create" class="mb-2 btn btn-info col-sm-3">Create restaurant</a>
+          <div class="col-sm"></div>
+          <div class="dropdown">
+            <a href="#" class="col-sm btn btn-info dropdown-toggle" role="button" data-toggle="dropdown">
+              Sort
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/sort/asc">A -> Z</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/sort/desc">Z -> A</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/sort/category">Category</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/sort/location">Region</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <form action="/search" method="GET">
         <div class="input-group">
           <input type="text" name="keyword" id="" class="form-control" placeholder="Search restaurant name or category"
