@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const host = 'localhost' //'34.80.159.59'
+const methodOverride = require('method-override')
 
 // set handlebars engine, static path
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -14,6 +15,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/', require('./routes/home'))
 app.use('/shops', require('./routes/restaurants'))
+app.use(methodOverride('_method'))
 
 mongoose.connect(`mongodb://${host}/restaurant`, { useNewUrlParser: true })
 

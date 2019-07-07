@@ -3,7 +3,7 @@
 <style>
   @import url('/css/show.css');
 </style>
-<form method="POST" action="/shops/{{restaurant.id}}">
+<form method="POST" action="/shops/{{restaurant.id}}?_method=PUT">
   <h1 class="mb-1 restaurant-show-title">
     <input type="text" name="name" value="{{restaurant.name}}">
   </h1>

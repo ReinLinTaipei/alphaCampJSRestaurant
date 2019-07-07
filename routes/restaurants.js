@@ -49,7 +49,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // edit action
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   console.error('edit action')
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
@@ -68,7 +68,7 @@ router.post('/:id', (req, res) => {
 })
 
 // delete
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
